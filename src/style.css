@@ -1,0 +1,842 @@
+/* ===== Reset y fuente base ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+body {
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #f6f6f6;
+  color: #333;
+  background-image: url("imagenes/fondo-naturista.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  line-height: 1.6;
+}
+
+body.index {
+  background-image: url('imagenes/fondo.jpg');
+}
+
+/* ===== Encabezado y navegación ===== */
+header {
+  background: linear-gradient(90deg, #6A4C9C, #4E347A);
+  color: #fff;
+  padding: 1rem;
+  text-align: center;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.1);
+}
+
+nav ul {
+  list-style: none;
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  flex-wrap: wrap;
+}
+
+nav ul li a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  padding: 8px 12px;
+  border-radius: 5px;
+  transition: background 0.3s, color 0.3s;
+}
+
+nav ul li a:hover {
+  background: #FFD700;
+  color: #4E347A;
+}
+
+/* ===== Main & títulos ===== */
+main {
+  padding: 2rem;
+  max-width: 1200px;
+  margin: auto;
+}
+
+h1, h2 {
+  color: #2e7d32;
+  text-align: center;
+}
+
+/* ===== Productos ===== */
+.productos,
+.productos-lista {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+  gap: 20px;
+  padding: 2rem;
+}
+
+.producto,
+.producto-card {
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+  padding: 15px;
+  text-align: center;
+  transition: transform 0.3s ease;
+  opacity: 0;
+  transform: translateY(20px);
+  animation: aparecer 0.5s ease forwards;
+}
+
+.producto:hover,
+.producto-card:hover {
+  transform: translateY(-5px);
+}
+
+.producto img,
+.producto-card img {
+  width: 100%;
+  max-height: 200px;
+  object-fit: cover;
+  border-radius: 10px;
+  transition: transform 0.3s ease-in-out;
+}
+
+.producto:hover img {
+  transform: scale(1.05);
+}
+
+.producto-card h4 {
+  margin: 10px 0 5px;
+  color: #2e7d32;
+}
+
+.producto-card .precio {
+  font-weight: bold;
+  color: #388e3c;
+}
+
+/* ===== Botones ===== */
+button,
+.btn,
+.btn-hero {
+  background-color: #4CAF50;
+  color: white;
+  padding: 10px 16px;
+  border: none;
+  font-size: 16px;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  margin: 5px;
+  text-decoration: none;
+  display: inline-block;
+}
+
+button:hover,
+.btn:hover,
+.btn-hero:hover {
+  background-color: #388e3c;
+  transform: scale(1.05);
+}
+
+button:active {
+  background-color: #2e7d32;
+  transform: scale(0.98);
+}
+
+/* ===== Hero Section ===== */
+#hero {
+  background: url('imagenes/banner-naturista.jpg') center/cover no-repeat;
+  padding: 120px 20px;
+  text-align: center;
+  color: white;
+  position: relative;
+}
+
+#hero::before {
+  content: '';
+  position: absolute;
+  top: 0; left: 0; right: 0; bottom: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+  z-index: 0;
+}
+
+.contenido-hero {
+  position: relative;
+  z-index: 1;
+}
+
+.contenido-hero h1 {
+  font-size: 3rem;
+  margin-bottom: 10px;
+  animation: aparecer 1.2s ease-out forwards;
+}
+
+.contenido-hero p {
+  font-size: 1.2rem;
+  margin-bottom: 20px;
+  animation: aparecer 1.4s ease-out forwards;
+}
+
+.btn-hero {
+  padding: 12px 25px;
+  font-weight: bold;
+  animation: aparecer 1.6s ease-out forwards;
+}
+
+/* ===== Animaciones ===== */
+.animado {
+  opacity: 0;
+  transform: translateY(30px);
+  animation: aparecer 1.2s ease-out forwards;
+}
+
+.animado:nth-child(1) { animation-delay: 0.2s; }
+.animado:nth-child(2) { animation-delay: 0.5s; }
+.animado:nth-child(3) { animation-delay: 0.8s; }
+
+@keyframes aparecer {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* ===== Notificaciones ===== */
+.notification,
+#mensaje-carrito,
+.notificacion {
+  position: fixed;
+  right: 20px;
+  padding: 1rem 1.5rem;
+  border-radius: 10px;
+  color: white;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  z-index: 9999;
+}
+
+.notification {
+  top: 20px;
+  background-color: #6A4C9C;
+  transform: translateY(-20px);
+}
+
+.notification.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+#mensaje-carrito {
+  top: 20px;
+  background-color: #4CAF50;
+  transform: scale(0.95);
+}
+
+#mensaje-carrito.mostrar {
+  opacity: 1;
+  pointer-events: auto;
+  transform: scale(1);
+}
+
+.notificacion {
+  bottom: 30px;
+  right: 30px;
+  background-color: #4CAF50;
+  display: none;
+  font-size: 1rem;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.3);
+  transition: opacity 0.5s ease;
+}
+
+.notificacion.mostrar {
+  display: block;
+  opacity: 1;
+}
+
+/* ===== Footer ===== */
+footer {
+  background: #6A4C9C;
+  color: white;
+  padding: 1rem;
+  text-align: center;
+  margin-top: 2rem;
+  box-shadow: 0 -4px 6px rgba(0,0,0,0.1);
+}
+
+footer p {
+  text-align: center;
+  font-size: 0.9rem;
+  color: #555;
+  margin: 20px 0;
+}
+
+/* ===== Formularios ===== */
+.form-cita {
+  display: flex;
+  justify-content: center;
+  padding: 20px;
+}
+
+.form-cita table {
+  border-collapse: separate;
+  border-spacing: 12px 16px;
+  font-size: 18px;
+  background-color: #ffffff;
+  padding: 24px;
+  border-radius: 12px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.form-cita input {
+  padding: 8px;
+  font-size: 16px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+  width: 100%;
+}
+
+/* ===== Acordeón ===== */
+.acordeon .item {
+  margin-bottom: 10px;
+  border: 1px solid #ddd;
+  border-radius: 10px;
+  overflow: hidden;
+}
+
+.acordeon-btn {
+  background-color: #4CAF50;
+  color: white;
+  cursor: pointer;
+  padding: 14px 20px;
+  width: 100%;
+  text-align: left;
+  font-size: 18px;
+  border: none;
+  outline: none;
+  transition: background-color 0.3s ease;
+}
+
+.acordeon-btn:hover {
+  background-color: #45a049;
+}
+
+.panel {
+  background-color: #f9f9f9;
+  max-height: 0;
+  overflow: hidden;
+  transition: max-height 0.4s ease-out;
+  padding: 0 20px;
+}
+
+.panel p, .panel ul, .panel form {
+  margin: 10px 0;
+  padding: 10px 0;
+}
+
+/* ===== Otros ===== */
+#bienvenida p {
+  text-align: center;
+  font-size: 1.2rem;
+  margin: 10px auto;
+  max-width: 600px;
+}
+
+.admin-body {
+  background-image: url("imagenes/fondo-naturista.jpg");
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+}
+
+/* Fondo y contenedor */
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.15);
+  border-radius: 20px;
+  backdrop-filter: blur(15px);
+  -webkit-backdrop-filter: blur(15px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.37);
+  color: #fff;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+/* Tabla con efecto cristal */
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 15px; /* espacio vertical entre filas */
+  background: transparent;
+}
+
+thead th {
+  background: rgba(255, 255, 255, 0.3);
+  color: #fff;
+  font-weight: 600;
+  padding: 15px 20px;
+  text-align: left;
+  border-radius: 12px 12px 0 0;
+  backdrop-filter: blur(10px);
+}
+
+tbody tr {
+  background: rgba(255, 255, 255, 0.12);
+  color: #e0e0e0;
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+  background: rgba(255, 255, 255, 0.25);
+}
+
+tbody td {
+  padding: 15px 20px;
+  vertical-align: middle;
+  border-left: 1px solid rgba(255,255,255,0.1);
+}
+
+tbody td:first-child {
+  border-left: none;
+}
+
+button {
+  background: rgba(255, 255, 255, 0.25);
+  border: 1.5px solid rgba(255, 255, 255, 0.6);
+  color: #fff;
+  padding: 8px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+  transition: background-color 0.3s ease, border-color 0.3s ease;
+}
+
+button:hover {
+  background: rgba(255, 255, 255, 0.5);
+  border-color: #a3d9a5;
+  color: #1b5e20;
+}
+
+#total-price {
+  margin-top: 20px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #a3d9a5;
+  text-align: right;
+  text-shadow: 0 0 6px #a3d9a5;
+}
+
+main {
+  max-width: 900px;
+  margin: 2rem auto;
+  padding: 2rem;
+  background: rgba(255, 255, 255, 0.3); /* menos transparente que antes */
+  border-radius: 20px;
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
+  color: #333; /* texto oscuro para mejor legibilidad */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+table {
+  width: 100%;
+  border-collapse: separate;
+  border-spacing: 0 12px;
+  background: transparent;
+}
+
+thead th {
+  background: rgba(255, 255, 255, 0.8); /* más opaco para el encabezado */
+  color: #2e7d32; /* verde oscuro, legible */
+  font-weight: 700;
+  padding: 15px 20px;
+  text-align: left;
+  border-radius: 12px 12px 0 0;
+  backdrop-filter: none; /* sin blur aquí para mejor nitidez */
+  box-shadow: 0 0 10px rgba(0,0,0,0.05);
+}
+
+tbody tr {
+  background: rgba(255, 255, 255, 0.6); /* opaco para filas */
+  color: #222; /* texto oscuro */
+  border-radius: 12px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.05);
+  transition: background-color 0.3s ease;
+}
+
+tbody tr:hover {
+  background: rgba(255, 255, 255, 0.85); /* resaltado */
+}
+
+tbody td {
+  padding: 15px 20px;
+  vertical-align: middle;
+  border-left: 1px solid rgba(0,0,0,0.05);
+  color: #333;
+}
+
+tbody td:first-child {
+  border-left: none;
+}
+
+button {
+  background: #4caf50; /* verde vivo */
+  border: none;
+  color: white;
+  padding: 8px 14px;
+  border-radius: 12px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 2px 8px rgba(76,175,80,0.4);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+button:hover {
+  background: #388e3c;
+  box-shadow: 0 4px 15px rgba(56,142,60,0.6);
+}
+
+#total-price {
+  margin-top: 20px;
+  font-size: 1.6rem;
+  font-weight: 700;
+  color: #2e7d32;
+  text-align: right;
+}
+
+main > button {
+  margin-top: 30px;
+  padding: 14px 30px;
+  font-size: 1.1rem;
+  border-radius: 16px;
+  background: #4caf50;
+  border: none;
+  color: white;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 18px rgba(76,175,80,0.5);
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+main > button:hover {
+  background: #388e3c;
+  box-shadow: 0 8px 22px rgba(56,142,60,0.7);
+}
+
+.notificacion {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  padding: 16px 24px;
+  border-radius: 20px;
+  font-weight: 600;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  box-shadow: 0 6px 22px rgba(0, 0, 0, 0.2);
+  background: rgba(30, 30, 30, 0.6); /* más oscuro para contraste */
+  backdrop-filter: blur(10px);
+  -webkit-backdrop-filter: blur(10px);
+  color: #fff;
+  opacity: 0;
+  pointer-events: none;
+  z-index: 9999;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+  transform: translateY(20px);
+}
+
+.notificacion.show {
+  opacity: 1;
+  pointer-events: auto;
+  transform: translateY(0);
+}
+
+/* Tipos de notificación */
+.notificacion.success {
+  border-left: 6px solid #4caf50;
+}
+
+.notificacion.error {
+  border-left: 6px solid #f44336;
+}
+
+.notificacion.info {
+  border-left: 6px solid #2196f3;
+}
+
+.notificacion.warning {
+  border-left: 6px solid #ffc107;
+}
+
+.factura-contenedor {
+  max-width: 700px;
+  margin: auto;
+  background: #fff;
+  padding: 2rem;
+  border-radius: 15px;
+  color: #333;
+  font-family: 'Segoe UI', sans-serif;
+  box-shadow: 0 0 10px rgba(0,0,0,0.1);
+}
+
+.factura-contenedor h2 {
+  text-align: center;
+  color: #006400;
+}
+
+.factura-contenedor table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 1rem;
+}
+
+.factura-contenedor th,
+.factura-contenedor td {
+  border: 1px solid #ccc;
+  padding: 0.75rem;
+  text-align: left;
+}
+
+.factura-contenedor th {
+  background-color: #d4edda;
+  color: #155724;
+}
+
+.factura-contenedor p {
+  margin-top: 1rem;
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #factura, #factura * {
+    visibility: visible;
+  }
+  #factura {
+    position: absolute;
+    top: 0;
+    left: 0;
+  }
+}
+
+#hero {
+  position: relative;
+  background: url('imagenes/fondo-hero.jpg') center/cover no-repeat;
+  min-height: 400px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 3rem;
+  border-radius: 20px;
+  overflow: hidden;
+}
+
+#hero::before {
+  content: "";
+  position: absolute;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.4); /* oscurece para legibilidad */
+  backdrop-filter: blur(4px); /* efecto cristal */
+  z-index: 0;
+}
+
+.contenido-hero {
+  position: relative;
+  z-index: 1;
+  color: white;
+  max-width: 800px;
+}
+
+.contenido-hero h1 {
+  font-size: 2.5rem;
+  margin-bottom: 1rem;
+}
+
+.contenido-hero p {
+  font-size: 1.2rem;
+  margin-bottom: 1rem;
+}
+
+.btn-hero {
+  display: inline-block;
+  padding: 0.75rem 1.5rem;
+  background-color: rgba(255, 255, 255, 0.1);
+  color: #fff;
+  border: 1px solid #fff;
+  border-radius: 10px;
+  text-decoration: none;
+  backdrop-filter: blur(2px);
+  transition: background 0.3s ease;
+}
+
+.btn-hero:hover {
+  background-color: rgba(255, 255, 255, 0.3);
+}
+
+.tabla-login {
+  margin: 0 auto;
+  border-collapse: separate;
+  border-spacing: 10px;
+  font-size: 1rem;
+  color: inherit;
+}
+
+.tabla-login td {
+  padding: 5px;
+}
+
+.tabla-login input {
+  width: 100%;
+  padding: 8px;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+  background-color: #fff;
+  color: #333;
+  outline: none;
+}
+
+.tabla-login input:focus {
+  border-color: #4caf50;
+  box-shadow: 0 0 5px rgba(76, 175, 80, 0.4);
+}
+
+#producto-form {
+  max-width: 400px;
+  margin: 20px auto;
+  padding: 25px;
+  background: #fff3e0; /* un beige muy claro */
+  border-radius: 10px;
+  box-shadow: 0 6px 15px rgba(179, 44, 0, 0.4); /* sombra rojiza fuerte */
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+#producto-form input[type="text"],
+#producto-form input[type="number"],
+#producto-form select,
+#producto-form input[type="file"] {
+  width: 100%;
+  padding: 12px 14px;
+  margin: 12px 0 22px 0;
+  border: 2.5px solid #b32c00; /* rojo oscuro fuerte */
+  border-radius: 8px;
+  font-size: 1rem;
+  font-weight: 600;
+  color: #4a1f00; /* marrón oscuro para texto */
+  transition: border-color 0.3s ease, background-color 0.3s ease;
+  box-sizing: border-box;
+  background-color: #fff7f0;
+}
+
+#producto-form input[type="text"]::placeholder,
+#producto-form input[type="number"]::placeholder {
+  color: #a83c00;
+  font-weight: 500;
+  font-style: normal;
+}
+
+#producto-form input[type="text"]:focus,
+#producto-form input[type="number"]:focus,
+#producto-form select:focus,
+#producto-form input[type="file"]:focus {
+  outline: none;
+  border-color: #ff4c00; /* naranja fuerte */
+  background-color: #fff0e6;
+  color: #5a1f00;
+}
+
+#producto-form label {
+  font-weight: 700;
+  color: #b32c00;
+  display: block;
+  margin-bottom: 8px;
+  font-size: 1rem;
+  user-select: none;
+}
+
+#producto-form button.btn {
+  width: 100%;
+  background-color: #d84315; /* rojo/naranja fuerte */
+  color: #fff;
+  border: none;
+  padding: 14px 0;
+  font-size: 1.2rem;
+  font-weight: 700;
+  border-radius: 10px;
+  cursor: pointer;
+  box-shadow: 0 5px 12px #d8431533;
+  transition: background-color 0.3s ease, box-shadow 0.3s ease;
+}
+
+#producto-form button.btn:hover {
+  background-color: #ff5722; /* naranja vibrante */
+  box-shadow: 0 6px 15px #ff572299;
+}
+
+#edit-index {
+  display: none;
+}
+
+#informacion-extra {
+  text-align: center;
+}
+
+.mensaje-carrito {
+  position: fixed;
+  top: 20px;
+  right: 20px;
+  background: #4caf50;
+  color: white;
+  padding: 10px 20px;
+  border-radius: 10px;
+  z-index: 1000;
+  animation: fadeInOut 2s;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateY(-10px); }
+  10% { opacity: 1; transform: translateY(0); }
+  90% { opacity: 1; }
+  100% { opacity: 0; transform: translateY(-10px); }
+}
+
+
+.mensaje {
+  position: fixed;
+  top: 20px;
+  left: 50%;
+  transform: translateX(-50%);
+  background-color: #28a745;
+  color: white;
+  padding: 12px 24px;
+  border-radius: 6px;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  font-weight: bold;
+  z-index: 9999;
+  animation: fadeInOut 3s ease-in-out;
+}
+
+@keyframes fadeInOut {
+  0% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+  10% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  90% { opacity: 1; transform: translateX(-50%) translateY(0); }
+  100% { opacity: 0; transform: translateX(-50%) translateY(-10px); }
+}
+
